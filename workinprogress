@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rare Orion | Official Site</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Inter&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-image: url('https://rareorion-site-assets.s3.amazonaws.com/starry_orion_sky.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #eafaf3;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #1c1e2b;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid #3c4a5a;
+      font-family: 'Poppins', sans-serif;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #55b189;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      flex: 1 1 auto;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #eafaf3;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: #55b189;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 3rem 2rem;
+      text-align: center;
+      border-radius: 16px;
+      border: 6px double transparent;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      background-color: rgba(41, 85, 66, 0.75);
+      background-clip: padding-box;
+      position: relative;
+    }
+    .container::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      right: -6px;
+      bottom: -6px;
+      z-index: -1;
+      border: 6px double #55b189;
+      border-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/DNA_Icon.png/600px-DNA_Icon.png") 30 round;
+      border-image-width: 6px;
+      border-radius: 16px;
+    }
+    .profile-img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #55b189;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      margin: 1rem 0 0.3rem;
+      color: #eafaf3;
+      font-family: 'Poppins', sans-serif;
+    }
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      margin-bottom: 1.25rem;
+      color: #9ff3d0;
+      font-weight: 500;
+    }
+    p.bio {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      color: #f0fdf8;
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+    .button-row {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .button {
+      padding: 1rem 2rem;
+      background-color: #55b189;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .button:hover {
+      background-color: #3a9570;
+      transform: scale(1.05);
+    }
+    .email {
+      font-size: 1.25rem;
+      margin-top: 2.5rem;
+      color: #eafaf3;
+      font-weight: 500;
+      word-break: break-word;
+    }
+    .email a {
+      color: #eafaf3;
+      text-decoration: none;
+    }
+    .email a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .logo {
+        font-size: 1.5rem;
+        text-align: center;
+        flex: 1 1 100%;
+        margin-bottom: 0.5rem;
+      }
+      .container {
+        padding: 2rem 1rem;
+      }
+      .profile-img {
+        width: 160px;
+        height: 160px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.25rem;
+      }
+      .button {
+        width: 100%;
+        padding: 0.75rem;
+      }
+      .email {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">RARE ORION</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#topics">Topics</a>
+      <a href="#rare-rhymefire">Rare Rhymefire</a>
+      <a href="#microscope">Under the Rare Microscope</a>
+      <a href="#not-so-typical">Not So Typical</a>
+      <a href="#voice">Voice</a>
+      <a href="#video">Video</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main class="container">
+    <img src="https://rareorion-site-assets.s3.amazonaws.com/IMG_20210719_233221_276.jpg" alt="Rare Orion profile" class="profile-img">
+    <h1>Rare Orion</h1>
+    <h2>ND Logic 🧠 • Chronically ill Queer 🦖</h2>
+    <p class="bio">Rare Orion is a science-driven content creator blending neurospicy logic, queer joy, and poetic depth across topics like genetics, neurodivergence, and identity. Known for speaking truth with wit and warmth, they use content to challenge norms and create space for discovery.</p>
+    <div class="button-row">
+      <a href="https://linktr.ee/rareorion" class="button" target="_blank">Explore My Linktree</a>
+      <a href="#projects" class="button">View My Work</a>
+    </div>
+    <p class="email">📩 <a href="mailto:booking@rareorion.com">booking@rareorion.com</a></p>
+  </main>
+</body>
+</html>
