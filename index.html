@@ -50,10 +50,11 @@ a{color:inherit}
 .cover img{display:block; width:100%; height:100%; object-fit:cover}
 .cover::after{content:""; position:absolute; top:0; bottom:0; left:0; width:7%;
   background:linear-gradient(90deg, rgba(0,0,0,.4), rgba(255,255,255,.14) 55%, rgba(0,0,0,0))}
-.cover-title{position:absolute; left:0; right:0; top:34%; text-align:center; color:#fff;
-  font-family:var(--book); font-weight:600; letter-spacing:.08em; font-size:12.5cqw; line-height:1;
-  text-shadow:0 2px 14px rgba(0,0,0,.65)}
-.cover-title small{display:block; margin-top:.55em; font-family:var(--display); font-weight:500; font-size:.38em; letter-spacing:.28em; text-transform:uppercase}
+.cover-text{position:absolute; inset:0; color:#fff; text-align:center; font-family:var(--book);
+  text-shadow:0 2px 12px rgba(0,0,0,.7), 0 0 2px rgba(0,0,0,.5)}
+.ct-title{position:absolute; left:0; right:0; top:7%; font-weight:600; letter-spacing:.08em; font-size:12.5cqw; line-height:1}
+.ct-sub{position:absolute; left:10%; right:10%; top:30%; font-style:italic; font-size:5.6cqw; line-height:1.25; text-wrap:balance}
+.ct-by{position:absolute; left:0; right:0; top:41%; font-family:var(--display); font-weight:500; font-size:4.2cqw; letter-spacing:.2em; text-transform:uppercase}
 @container (min-width:560px){
   .book-feature{grid-template-columns:200px 1fr; gap:28px}
   .cover{width:100%}
@@ -116,7 +117,21 @@ a{color:inherit}
 .about p{margin:0; color:var(--muted); font-size:.98rem}
 .booking{display:flex; flex-direction:column; gap:10px; padding:20px; border-radius:16px; background:var(--sky-2); border:1px solid var(--line)}
 .booking h3{font-family:var(--display); font-weight:800; font-size:1.25rem; margin:0}
-.row{display:flex; flex-wrap:wrap; align-items:center; gap:10px}
+.booking .sub{margin:0; color:var(--muted)}
+.form{display:flex; flex-direction:column; gap:14px; margin-top:6px}
+.form label{display:flex; flex-direction:column; gap:6px; font-family:var(--display); font-weight:500; font-size:.9rem; color:var(--ink)}
+.form .opt{color:var(--muted); font-weight:400}
+.two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:520px){.two{grid-template-columns:1fr}}
+.form input,.form select,.form textarea{
+  font:inherit; font-family:var(--body); font-size:1rem; color:var(--ink); background:var(--sky);
+  border:1px solid var(--line); border-radius:10px; padding:11px 12px; width:100%; min-width:0}
+.form textarea{resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none; border-color:var(--star); box-shadow:0 0 0 3px rgba(76,240,160,.25)}
+.hp{position:absolute; left:-9999px}
+.send{align-self:flex-start; font-family:var(--display); font-weight:800; font-size:1rem; padding:13px 22px}
+.alt{margin:0; color:var(--muted); font-size:.9rem}
+.sent{margin:0; padding:12px 14px; border-radius:10px; background:rgba(76,240,160,.12); border:1px solid var(--star); color:var(--ink); font-weight:700}
 .email{font-weight:700; user-select:all; word-break:break-all}
 button{
   font:inherit; font-size:.88rem; font-weight:700; cursor:pointer;
@@ -142,7 +157,7 @@ footer{text-align:center; color:var(--muted); font-size:.85rem; grid-column:1 / 
     <h1 class="sr">Rare Orion</h1>
     <p class="tag">Science communicator and content creator known for challenging assumptions, making complex subjects understandable, and inviting audiences to see familiar things in entirely new ways.</p>
     <ul class="proof">
-      <li><b>44K+</b> on TikTok</li>
+      <li><b>51K+</b> on TikTok</li>
       <li>Author</li>
       <li>Science educator</li>
     </ul>
@@ -156,7 +171,11 @@ footer{text-align:center; color:var(--muted); font-size:.85rem; grid-column:1 / 
     <section class="book-feature" aria-label="The book Locutions">
       <div class="cover">
         <img src="cover.jpg" alt="Cover art for Locutions: light through water onto a glowing floor, with a branch's shadow and two people's shadows">
-        <div class="cover-title" aria-hidden="true">LOCUTIONS<small>Rare Orion</small></div>
+        <div class="cover-text" aria-hidden="true">
+          <span class="ct-title">LOCUTIONS</span>
+          <span class="ct-sub">The Hidden Language of How You're Wired to Connect</span>
+          <span class="ct-by">by Rare Orion</span>
+        </div>
       </div>
       <div class="book">
       <p class="eyebrow">The book</p>
@@ -195,24 +214,46 @@ footer{text-align:center; color:var(--muted); font-size:.85rem; grid-column:1 / 
       <p>Rare Orion has spent their career exploring what it means to be human—from studying neuroscience and cardiopulmonary care to working in clinical laboratories, intensive care, and ocular and tissue recovery. Their curiosity eventually carried them beyond medicine and into science education, the performing arts, and digital storytelling.</p>
     </section>
 
-    <section class="booking" id="booking" aria-label="Bookings">
+    <section class="booking" id="booking" aria-label="Work with Rare">
       <p class="eyebrow">Speaking &amp; brand partnerships</p>
       <h3>Work with Rare</h3>
-      <div class="row">
-        <span class="email" id="email">booking@rareorion.com</span>
-        <button type="button" id="copy">Copy email</button>
-      </div>
+      <p class="sub">Tell me a little about what you have in mind and I'll get back to you.</p>
+      <p class="sent" id="sent" hidden>Thank you! Your message was sent. I'll be in touch soon.</p>
+      <form class="form" id="contact" name="contact" method="POST" action="/#sent" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp"><label>Leave this empty <input name="bot-field" id="bot-field"></label></p>
+        <div class="two">
+          <label for="f-name">Your name<input id="f-name" type="text" name="name" autocomplete="name" required></label>
+          <label for="f-email">Your email<input id="f-email" type="email" name="email" autocomplete="email" required></label>
+        </div>
+        <label for="f-org"><span>Company or organization <span class="opt">(optional)</span></span><input id="f-org" type="text" name="organization" autocomplete="organization"></label>
+        <label for="f-type">What's this about?
+          <select id="f-type" name="topic" required>
+            <option value="" disabled selected>Choose one</option>
+            <option>Speaking event</option>
+            <option>Brand partnership</option>
+            <option>Media or podcast</option>
+            <option>The book</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label for="f-msg">Message<textarea id="f-msg" name="message" rows="5" required></textarea></label>
+        <button type="submit" class="send">Send message</button>
+        <p class="alt">Prefer email? <span class="email">booking@rareorion.com</span></p>
+      </form>
     </section>
   </main>
 
   <footer>© 2026 Rare Orion</footer>
 </div>
 <script>
-document.getElementById('copy').addEventListener('click', function(){
-  var btn=this, t=document.getElementById('email').textContent;
-  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected — press copy';}
-  try{navigator.clipboard.writeText(t).then(function(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy email'},1600)},sel);}catch(e){sel();}
-});
+(function(){
+  if(location.hash==='#sent'){var m=document.getElementById('sent');m.hidden=false;document.getElementById('contact').hidden=true;}
+  var f=document.getElementById('contact');
+  if(!/rareorion\.com$|netlify\.app$/.test(location.hostname)){
+    f.addEventListener('submit',function(e){e.preventDefault();var m=document.getElementById('sent');m.textContent='Preview only. The form sends for real on rareorion.com.';m.hidden=false;});
+  }
+})();
 </script>
 </body>
 </html>
