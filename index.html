@@ -81,3 +81,79 @@ h1{font-family:var(--display); font-weight:800; font-size:2.6rem; letter-spacing
 .row{display:flex; flex-wrap:wrap; align-items:center; gap:10px}
 .email{font-weight:700; user-select:all; word-break:break-all}
 button{
+    font:inherit; font-size:.88rem; font-weight:700; cursor:pointer;
+  background:var(--star); color:var(--sky); border:0; border-radius:999px; padding:7px 14px;
+}
+button:focus-visible{outline:3px solid var(--ink); outline-offset:2px}
+footer{text-align:center; color:var(--muted); font-size:.85rem}
+@media (prefers-reduced-motion:reduce){.link{transition:none}.link:hover{transform:none}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <svg class="orion" viewBox="0 0 150 120" aria-hidden="true">
+      <line x1="40" y1="12" x2="62" y2="58"/><line x1="112" y1="18" x2="90" y2="62"/>
+      <line x1="62" y1="58" x2="76" y2="60"/><line x1="76" y1="60" x2="90" y2="62"/>
+      <line x1="62" y1="58" x2="44" y2="108"/><line x1="90" y1="62" x2="114" y2="104"/>
+      <circle cx="40" cy="12" r="4"/><circle cx="112" cy="18" r="3.2"/>
+      <circle class="belt" cx="62" cy="58" r="3.4"/><circle class="belt" cx="76" cy="60" r="3.4"/><circle class="belt" cx="90" cy="62" r="3.4"/>
+      <circle cx="44" cy="108" r="3"/><circle cx="114" cy="104" r="4.2"/>
+    </svg>
+    <h1>Rare Orion</h1>
+    <p class="tag">Neuroscience, neurodivergence, and real science for real brains. Author, speaker, former science teacher.</p>
+    <div class="sign">Stay Rare</div>
+  </header>
+
+  <section class="book" aria-label="The book">
+    <div class="eyebrow">The book</div>
+    <h2>Locutions</h2>
+    <p>Five nervous-system-based ways we show love and connection, named by the neurodivergent community.</p>
+    <ul class="chips">
+      <li>Penguin Pebbling</li><li>Parallel Play</li><li>Infodumping</li><li>Support Swapping</li><li>Deep Pressure</li>
+    </ul>
+    <p class="soon">Coming soon</p>
+  </section>
+
+  <nav class="links" aria-label="Social media">
+    <div class="eyebrow">Find me everywhere</div>
+    <div class="socials">
+      <a class="link" href="https://www.tiktok.com/@rareorion" target="_blank" rel="noopener">
+        <i class="dot"></i><div class="txt"><b>TikTok</b><span>@rareorion</span></div>
+      </a>
+      <a class="link" href="https://www.youtube.com/@rareorion" target="_blank" rel="noopener">
+        <i class="dot"></i><div class="txt"><b>YouTube</b><span>@rareorion</span></div>
+      </a>
+      <a class="link" href="https://www.instagram.com/rareorion" target="_blank" rel="noopener">
+        <i class="dot"></i><div class="txt"><b>Instagram</b><span>@rareorion</span></div>
+      </a>
+      <a class="link" href="https://www.snapchat.com/add/rareorionwins" target="_blank" rel="noopener">
+        <i class="dot"></i><div class="txt"><b>Snapchat</b><span>@rareorionwins</span></div>
+      </a>
+    </div>
+    <a class="link" href="https://www.amazon.com/shop/rareorion" target="_blank" rel="noopener">
+      <i class="dot"></i><div class="txt"><b>Amazon Storefront</b><span>Things I use and recommend</span></div><span class="go">→</span>
+    </a>
+  </nav>
+
+  <div class="book-email">
+    <div class="eyebrow">Speaking &amp; brand bookings</div>
+    <div class="row">
+      <span class="email" id="email">booking@rareorion.com</span>
+      <button type="button" id="copy">Copy email</button>
+    </div>
+  </div>
+
+  <footer>© 2026 Rare Orion</footer>
+</main>
+<script>
+document.getElementById('copy').addEventListener('click', function(){
+  var btn=this, t=document.getElementById('email').textContent;
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('email'));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Selected — press copy';}
+  try{navigator.clipboard.writeText(t).then(function(){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy email'},1600)},sel);}catch(e){sel();}
+});
+</script>
+</body>
+</html>
+
+  
