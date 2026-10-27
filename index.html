@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Rare Orion: neuroscience, neurodivergence, and the book Locutions.">
+<title>Rare Orion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{
+  color-scheme: dark;
+  --sky:#08201a;
+  --sky-2:#0f3226;
+  --line:#1e5240;
+  --ink:#e7f7ef;
+  --muted:#9ac7b2;
+  --star:#4cf0a0;
+  --nebula:#3ccf9a;
+  --jade:#2fbf7f;
+  --teal:#22a77a;
+  --viridian:#3f9a72;
+  --seaglass:#a6efc9;
+  --peacock:#1fae8a;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background: radial-gradient(120% 60% at 50% 0%, #10442f 0%, var(--sky) 60%) fixed, var(--sky);
+  color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.5;
+  padding-left:max(16px, env(safe-area-inset-left,0px));
+  padding-right:max(16px, env(safe-area-inset-right,0px));
+  padding-block:40px 56px; min-height:100%;
+}
+main{max-width:460px; margin:0 auto; display:flex; flex-direction:column; gap:28px}
+header{display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px}
+.orion{width:150px; max-width:100%; height:auto}
+.orion circle{fill:var(--ink)}
+.orion .belt{fill:var(--star)}
+.orion .belt:nth-of-type(2){fill:var(--nebula)}
+.orion .belt:nth-of-type(3){fill:var(--jade)}
+.orion line{stroke:var(--line); stroke-width:1.2}
+h1{font-family:var(--display); font-weight:800; font-size:2.6rem; letter-spacing:-.02em; line-height:1; margin:0; text-wrap:balance}
+.tag{color:var(--muted); margin:0; max-width:34ch}
+.sign{font-family:var(--display); font-weight:500; color:var(--star); letter-spacing:.14em; text-transform:uppercase; font-size:.78rem}
+.links{display:flex; flex-direction:column; gap:12px}
+.link{
+  display:flex; align-items:center; gap:14px; padding:16px 18px; border-radius:14px;
+  background:var(--sky-2); border:1px solid var(--line); color:var(--ink); text-decoration:none;
+  transition:transform .15s ease, border-color .15s ease;
+}
+.link:hover,.link:focus-visible{border-color:var(--c,var(--star)); transform:translateY(-2px); outline:none}
+.link:focus-visible{box-shadow:0 0 0 3px var(--star)}
+.dot{flex:none; width:10px; height:10px; border-radius:50%; background:var(--c,var(--star)); box-shadow:0 0 10px var(--c,var(--star))}
+.socials .link:nth-child(1){--c:var(--seaglass)}
+.socials .link:nth-child(2){--c:var(--jade)}
+.socials .link:nth-child(3){--c:var(--peacock)}
+.socials .link:nth-child(4){--c:var(--viridian)}
+.links > .link{--c:var(--teal)}
+.link b{display:block; font-family:var(--display); font-weight:800; font-size:1.1rem}
+.link span{color:var(--muted); font-size:.92rem}
+.link .go{margin-left:auto; color:var(--muted); font-size:1.2rem}
+.socials{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+@media (max-width:360px){.socials{grid-template-columns:1fr}}
+.txt{min-width:0}
+.book{
+  border:1px solid var(--nebula); border-radius:18px; padding:22px 20px;
+  background:linear-gradient(160deg, rgba(60,207,154,.18), rgba(47,191,143,0) 70%), var(--sky-2);
+  display:flex; flex-direction:column; gap:12px;
+}
+.eyebrow{font-family:var(--display); font-weight:500; text-transform:uppercase; letter-spacing:.14em; font-size:.75rem; color:var(--nebula)}
+.book h2{font-family:var(--display); font-weight:800; font-size:2rem; margin:0; line-height:1}
+.book p{margin:0; color:var(--muted)}
+.chips{display:flex; flex-wrap:wrap; gap:8px; list-style:none; padding:0; margin:4px 0 0}
+.chips li{font-size:.85rem; padding:5px 11px; border-radius:999px; border:1px solid var(--line); color:var(--ink)}
+.chips li:nth-child(1){border-color:var(--seaglass)}.chips li:nth-child(2){border-color:var(--jade)}.chips li:nth-child(3){border-color:var(--teal)}.chips li:nth-child(4){border-color:var(--peacock)}.chips li:nth-child(5){border-color:var(--viridian)}
+.soon{font-family:var(--display); font-weight:800; color:var(--star)}
+.book-email{display:flex; flex-direction:column; gap:8px; padding:16px 18px; border-radius:14px; border:1px dashed var(--line)}
+.row{display:flex; flex-wrap:wrap; align-items:center; gap:10px}
+.email{font-weight:700; user-select:all; word-break:break-all}
+button{
