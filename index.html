@@ -12,6 +12,7 @@
   color-scheme: dark;
   --sky:#08201a;
   --sky-2:#0f3226;
+  --sky-3:#14402f;
   --line:#1e5240;
   --ink:#f1ecd8;
   --muted:#9ac7b2;
@@ -33,40 +34,70 @@
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
-  background: radial-gradient(120% 60% at 50% 0%, #10442f 0%, var(--sky) 60%) fixed, var(--sky);
+  background: radial-gradient(90% 50% at 20% 0%, #10442f 0%, rgba(16,68,47,0) 70%) fixed, var(--sky);
   color:var(--ink); font-family:var(--body); font-size:17px; line-height:1.5;
-  padding-left:max(16px, env(safe-area-inset-left,0px));
-  padding-right:max(16px, env(safe-area-inset-right,0px));
+  padding-left:max(20px, env(safe-area-inset-left,0px));
+  padding-right:max(20px, env(safe-area-inset-right,0px));
   padding-block:40px 56px; min-height:100%;
 }
-main{max-width:480px; margin:0 auto; display:flex; flex-direction:column; gap:30px}
-header{display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px}
-.logo{display:block; width:100%; max-width:440px; height:auto; mix-blend-mode:screen; margin-bottom:-6px}
+a{color:inherit}
+.wrap{max-width:1040px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:36px}
+.side{display:flex; flex-direction:column; align-items:center; text-align:center; gap:16px}
+.main{display:flex; flex-direction:column; gap:32px; min-width:0; container-type:inline-size}
+.book-feature{display:grid; grid-template-columns:1fr; gap:24px; align-items:center}
+.cover{position:relative; justify-self:center; width:min(220px, 62%); aspect-ratio:660/1028; border-radius:3px 8px 8px 3px; overflow:hidden;
+  box-shadow:0 26px 50px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06); container-type:inline-size; transform:rotate(-1.5deg)}
+.cover img{display:block; width:100%; height:100%; object-fit:cover}
+.cover::after{content:""; position:absolute; top:0; bottom:0; left:0; width:7%;
+  background:linear-gradient(90deg, rgba(0,0,0,.4), rgba(255,255,255,.14) 55%, rgba(0,0,0,0))}
+.cover-title{position:absolute; left:0; right:0; top:34%; text-align:center; color:#fff;
+  font-family:var(--book); font-weight:600; letter-spacing:.08em; font-size:12.5cqw; line-height:1;
+  text-shadow:0 2px 14px rgba(0,0,0,.65)}
+.cover-title small{display:block; margin-top:.55em; font-family:var(--display); font-weight:500; font-size:.38em; letter-spacing:.28em; text-transform:uppercase}
+@container (min-width:560px){
+  .book-feature{grid-template-columns:200px 1fr; gap:28px}
+  .cover{width:100%}
+}
+.photo{width:148px; height:148px; border-radius:50%; object-fit:cover; object-position:50% 22%;
+  border:3px solid var(--sky-3); box-shadow:0 0 0 1px var(--line), 0 12px 32px rgba(0,0,0,.45)}
+.logo{display:block; width:100%; max-width:380px; height:auto; margin:4px 0 0}
 .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
-.tag{color:var(--muted); margin:0; max-width:38ch}
-.eyebrow{font-family:var(--display); font-weight:500; text-transform:uppercase; letter-spacing:.14em; font-size:.75rem; color:var(--nebula)}
+.tag{color:var(--muted); margin:0; max-width:40ch}
+.proof{display:flex; flex-wrap:wrap; justify-content:center; gap:8px; list-style:none; padding:0; margin:0}
+.proof li{font-family:var(--display); font-weight:500; font-size:.82rem; padding:6px 12px; border-radius:999px; background:var(--sky-2); border:1px solid var(--line); color:var(--ink)}
+.proof b{color:var(--star); font-weight:800}
+.cta{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; width:100%}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:13px 20px; border-radius:999px;
+  font-family:var(--display); font-weight:800; font-size:1rem; text-decoration:none; transition:transform .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible{outline:3px solid var(--ink); outline-offset:3px}
+.btn.primary{background:var(--star); color:var(--sky)}
+.btn.ghost{border:1.5px solid var(--nebula); color:var(--ink)}
+.eyebrow{font-family:var(--display); font-weight:500; text-transform:uppercase; letter-spacing:.14em; font-size:.75rem; color:var(--nebula); margin:0}
 .book{
   position:relative; background:var(--paper); color:var(--paper-ink);
-  border-radius:6px 14px 14px 6px; padding:28px 24px 26px 38px;
-  box-shadow:0 18px 40px rgba(0,0,0,.45);
+  border-radius:6px 16px 16px 6px; padding:30px 28px 28px 44px;
+  box-shadow:0 22px 48px rgba(0,0,0,.5);
   display:flex; flex-direction:column; gap:14px;
 }
 .book::before{
-  content:""; position:absolute; left:0; top:0; bottom:0; width:16px;
+  content:""; position:absolute; left:0; top:0; bottom:0; width:18px;
   background:linear-gradient(90deg, var(--spine), #2f8a63 70%, rgba(0,0,0,.15));
   border-radius:6px 0 0 6px;
 }
 .book .eyebrow{color:var(--spine); font-weight:800}
-.book h2{font-family:var(--book); font-weight:600; font-size:2.6rem; letter-spacing:.06em; line-height:1; margin:0}
+.book h2{font-family:var(--book); font-weight:600; font-size:clamp(2.2rem, 7vw, 3rem); letter-spacing:.06em; line-height:1; margin:0}
 .subtitle{font-family:var(--book); font-style:italic; font-size:1.15rem; line-height:1.3; margin:-4px 0 0; color:var(--paper-muted); text-wrap:balance}
 .hook{font-family:var(--book); font-style:italic; font-size:1.3rem; line-height:1.35; margin:6px 0 0; padding-left:14px; border-left:3px solid var(--spine); text-wrap:balance}
 .book p{margin:0}
-.book .blurb{font-size:1rem; color:var(--paper-ink)}
-.status{font-family:var(--display); font-weight:800; font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; color:var(--spine); margin-top:4px}
+.blurb{font-size:1rem}
+.status{font-family:var(--display); font-weight:800; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; color:var(--spine); margin-top:4px}
 .links{display:flex; flex-direction:column; gap:12px}
+.socials{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+@media (max-width:360px){.socials{grid-template-columns:1fr}}
 .link{
   display:flex; align-items:center; gap:14px; padding:16px 18px; border-radius:14px;
-  background:var(--sky-2); border:1px solid var(--line); color:var(--ink); text-decoration:none;
+  background:var(--sky-2); border:1px solid var(--line); text-decoration:none;
   transition:transform .15s ease, border-color .15s ease;
 }
 .link:hover,.link:focus-visible{border-color:var(--c,var(--star)); transform:translateY(-2px); outline:none}
@@ -77,80 +108,105 @@ header{display:flex; flex-direction:column; align-items:center; text-align:cente
 .socials .link:nth-child(3){--c:var(--peacock)}
 .socials .link:nth-child(4){--c:var(--viridian)}
 .links > .link{--c:var(--teal)}
-.link b{display:block; font-family:var(--display); font-weight:800; font-size:1.1rem}
-.link span{color:var(--muted); font-size:.92rem}
-.link .go{margin-left:auto; color:var(--muted); font-size:1.2rem}
-.socials{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-@media (max-width:360px){.socials{grid-template-columns:1fr}}
 .txt{min-width:0}
+.link b{display:block; font-family:var(--display); font-weight:800; font-size:1.08rem}
+.link span{color:var(--muted); font-size:.9rem}
+.link .go{margin-left:auto; color:var(--muted); font-size:1.2rem}
 .about{display:flex; flex-direction:column; gap:8px}
-.about p{margin:0; color:var(--muted)}
-.book-email{display:flex; flex-direction:column; gap:8px; padding:16px 18px; border-radius:14px; border:1px dashed var(--line)}
+.about p{margin:0; color:var(--muted); font-size:.98rem}
+.booking{display:flex; flex-direction:column; gap:10px; padding:20px; border-radius:16px; background:var(--sky-2); border:1px solid var(--line)}
+.booking h3{font-family:var(--display); font-weight:800; font-size:1.25rem; margin:0}
 .row{display:flex; flex-wrap:wrap; align-items:center; gap:10px}
 .email{font-weight:700; user-select:all; word-break:break-all}
 button{
   font:inherit; font-size:.88rem; font-weight:700; cursor:pointer;
-  background:var(--star); color:var(--sky); border:0; border-radius:999px; padding:7px 14px;
+  background:var(--star); color:var(--sky); border:0; border-radius:999px; padding:8px 15px;
 }
 button:focus-visible{outline:3px solid var(--ink); outline-offset:2px}
-footer{text-align:center; color:var(--muted); font-size:.85rem}
-@media (prefers-reduced-motion:reduce){.link{transition:none}.link:hover{transform:none}}
+footer{text-align:center; color:var(--muted); font-size:.85rem; grid-column:1 / -1}
+@media (min-width:880px){
+  body{padding-block:64px 64px}
+  .wrap{grid-template-columns:340px 1fr; gap:56px; align-items:start}
+  .side{position:sticky; top:48px}
+  .photo{width:100%; height:auto; aspect-ratio:4/5; border-radius:20px; object-position:50% 20%}
+  .logo{max-width:320px}
+}
+@media (prefers-reduced-motion:reduce){.link,.btn{transition:none}.link:hover,.btn:hover{transform:none}.cover{transform:none}}
 </style>
 </head>
 <body>
-<main>
-  <header>
+<div class="wrap">
+  <aside class="side">
+    <img class="photo" src="photo.jpg" alt="Rare Orion">
     <img class="logo" src="logo.png" alt="Rare Orion — Stay Curious, Stay Rare">
     <h1 class="sr">Rare Orion</h1>
     <p class="tag">Science communicator and content creator known for challenging assumptions, making complex subjects understandable, and inviting audiences to see familiar things in entirely new ways.</p>
-  </header>
-
-  <section class="book" aria-label="The book Locutions">
-    <div class="eyebrow">The book</div>
-    <h2>LOCUTIONS</h2>
-    <p class="subtitle">The Hidden Language of How You're Wired to Connect</p>
-    <p class="hook">What if you've spent your whole life trying to fix something that was never broken?</p>
-    <p class="blurb">In <em>Locutions</em>, Rare Orion introduces a different way of recognizing the language of human connection: the patterns already present in how we reach for one another, express care, and seek belonging.</p>
-    <p class="blurb">This isn't about learning to become someone better at connecting. It's about finally recognizing the connection that's been happening all along—including the parts of yourself you were taught to change.</p>
-    <p class="status">Coming soon · Published by Rare Orion</p>
-  </section>
-
-  <nav class="links" aria-label="Social media">
-    <div class="eyebrow">Find me everywhere</div>
-    <div class="socials">
-      <a class="link" href="https://www.tiktok.com/@rareorion" target="_blank" rel="noopener">
-        <i class="dot"></i><div class="txt"><b>TikTok</b><span>@rareorion</span></div>
-      </a>
-      <a class="link" href="https://www.youtube.com/@rareorion" target="_blank" rel="noopener">
-        <i class="dot"></i><div class="txt"><b>YouTube</b><span>@rareorion</span></div>
-      </a>
-      <a class="link" href="https://www.instagram.com/rareorion" target="_blank" rel="noopener">
-        <i class="dot"></i><div class="txt"><b>Instagram</b><span>@rareorion</span></div>
-      </a>
-      <a class="link" href="https://www.snapchat.com/add/rareorionwins" target="_blank" rel="noopener">
-        <i class="dot"></i><div class="txt"><b>Snapchat</b><span>@rareorionwins</span></div>
-      </a>
+    <ul class="proof">
+      <li><b>44K+</b> on TikTok</li>
+      <li>Author</li>
+      <li>Science educator</li>
+    </ul>
+    <div class="cta">
+      <a class="btn primary" href="https://www.tiktok.com/@rareorion" target="_blank" rel="noopener">Watch on TikTok</a>
+      <a class="btn ghost" href="#booking">Work with me</a>
     </div>
-    <a class="link" href="https://www.amazon.com/shop/rareorion" target="_blank" rel="noopener">
-      <i class="dot"></i><div class="txt"><b>Amazon Storefront</b><span>Things I use and recommend</span></div><span class="go">→</span>
-    </a>
-  </nav>
+  </aside>
 
-  <section class="about" aria-label="About Rare">
-    <div class="eyebrow">About Rare</div>
-    <p>Rare Orion has spent their career exploring what it means to be human—from studying neuroscience and cardiopulmonary care to working in clinical laboratories, intensive care, and ocular and tissue recovery. Their curiosity eventually carried them beyond medicine and into science education, the performing arts, and digital storytelling.</p>
-  </section>
+  <main class="main">
+    <section class="book-feature" aria-label="The book Locutions">
+      <div class="cover">
+        <img src="cover.jpg" alt="Cover art for Locutions: light through water onto a glowing floor, with a branch's shadow and two people's shadows">
+        <div class="cover-title" aria-hidden="true">LOCUTIONS<small>Rare Orion</small></div>
+      </div>
+      <div class="book">
+      <p class="eyebrow">The book</p>
+      <h2>LOCUTIONS</h2>
+      <p class="subtitle">The Hidden Language of How You're Wired to Connect</p>
+      <p class="hook">What if you've spent your whole life trying to fix something that was never broken?</p>
+      <p class="blurb">In <em>Locutions</em>, Rare Orion introduces a different way of recognizing the language of human connection: the patterns already present in how we reach for one another, express care, and seek belonging.</p>
+      <p class="blurb">This isn't about learning to become someone better at connecting. It's about finally recognizing the connection that's been happening all along—including the parts of yourself you were taught to change.</p>
+      <p class="status">Coming soon · Published by Rare Orion</p>
+      </div>
+    </section>
 
-  <div class="book-email">
-    <div class="eyebrow">Speaking &amp; brand bookings</div>
-    <div class="row">
-      <span class="email" id="email">booking@rareorion.com</span>
-      <button type="button" id="copy">Copy email</button>
-    </div>
-  </div>
+    <nav class="links" aria-label="Social media">
+      <p class="eyebrow">Find me everywhere</p>
+      <div class="socials">
+        <a class="link" href="https://www.tiktok.com/@rareorion" target="_blank" rel="noopener">
+          <i class="dot"></i><div class="txt"><b>TikTok</b><span>@rareorion</span></div>
+        </a>
+        <a class="link" href="https://www.youtube.com/@rareorion" target="_blank" rel="noopener">
+          <i class="dot"></i><div class="txt"><b>YouTube</b><span>@rareorion</span></div>
+        </a>
+        <a class="link" href="https://www.instagram.com/rareorion" target="_blank" rel="noopener">
+          <i class="dot"></i><div class="txt"><b>Instagram</b><span>@rareorion</span></div>
+        </a>
+        <a class="link" href="https://www.snapchat.com/add/rareorionwins" target="_blank" rel="noopener">
+          <i class="dot"></i><div class="txt"><b>Snapchat</b><span>@rareorionwins</span></div>
+        </a>
+      </div>
+      <a class="link" href="https://www.amazon.com/shop/rareorion" target="_blank" rel="noopener">
+        <i class="dot"></i><div class="txt"><b>Amazon Storefront</b><span>Things I use and recommend</span></div><span class="go">→</span>
+      </a>
+    </nav>
+
+    <section class="about" aria-label="About Rare">
+      <p class="eyebrow">About Rare</p>
+      <p>Rare Orion has spent their career exploring what it means to be human—from studying neuroscience and cardiopulmonary care to working in clinical laboratories, intensive care, and ocular and tissue recovery. Their curiosity eventually carried them beyond medicine and into science education, the performing arts, and digital storytelling.</p>
+    </section>
+
+    <section class="booking" id="booking" aria-label="Bookings">
+      <p class="eyebrow">Speaking &amp; brand partnerships</p>
+      <h3>Work with Rare</h3>
+      <div class="row">
+        <span class="email" id="email">booking@rareorion.com</span>
+        <button type="button" id="copy">Copy email</button>
+      </div>
+    </section>
+  </main>
 
   <footer>© 2026 Rare Orion</footer>
-</main>
+</div>
 <script>
 document.getElementById('copy').addEventListener('click', function(){
   var btn=this, t=document.getElementById('email').textContent;
